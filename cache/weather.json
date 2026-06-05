@@ -1,0 +1,19 @@
+{
+    "ok": true,
+    "source": "OpenWeatherMap",
+    "error": null,
+    "current": {
+        "label": "Dnes",
+        "description": "Zataženo",
+        "temp": 13,
+        "night_temp": 13,
+        "icon": "sun"
+    },
+    "tomorrow": {
+        "label": "Zítra",
+        "description": "Jasno",
+        "temp": 23,
+        "night_temp": 22,
+        "icon": "sun"
+    }
+}
