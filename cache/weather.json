@@ -4,9 +4,9 @@
     "error": null,
     "current": {
         "label": "Dnes",
-        "description": "Zataženo",
-        "temp": 13,
-        "night_temp": 13,
+        "description": "Oblačno",
+        "temp": 12,
+        "night_temp": 11,
         "icon": "sun"
     },
     "tomorrow": {

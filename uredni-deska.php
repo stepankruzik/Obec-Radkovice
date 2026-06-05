@@ -25,7 +25,7 @@ $categories = Db::queryAll("SELECT DISTINCT category FROM documents WHERE is_vis
 
 $pageTitle = 'Úřední deska | Radkovice u Budče';
 $activePage = 'uredni-deska';
-$bodyClass = 'subpage-body board-page';
+$bodyClass = 'subpage-body';
 require_once('includes/public-header.php');
 ?>
 

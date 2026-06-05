@@ -7,38 +7,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 Db::connect('localhost', 'radkovice', 'root', '');
 
-Db::query("CREATE TABLE IF NOT EXISTS site_settings (
-    setting_key VARCHAR(120) NOT NULL,
-    setting_value TEXT NOT NULL,
-    updated_at DATETIME NOT NULL,
-    PRIMARY KEY (setting_key)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci");
-
-Db::query("ALTER TABLE documents
-    ADD COLUMN IF NOT EXISTS file_path VARCHAR(255) NULL AFTER summary,
-    ADD COLUMN IF NOT EXISTS original_name VARCHAR(255) NULL AFTER file_path,
-    ADD COLUMN IF NOT EXISTS file_mime VARCHAR(120) NULL AFTER original_name,
-    ADD COLUMN IF NOT EXISTS preview_image VARCHAR(255) NULL AFTER file_mime");
-
-Db::query("CREATE TABLE IF NOT EXISTS gallery_photos (
-    id INT(11) NOT NULL AUTO_INCREMENT,
-    album_id INT(11) NOT NULL,
-    title VARCHAR(255) NOT NULL DEFAULT '',
-    image_path VARCHAR(255) NOT NULL,
-    sort_order INT(11) NOT NULL DEFAULT 0,
-    is_visible TINYINT(1) NOT NULL DEFAULT 1,
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
-    PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci");
-
-Db::query("ALTER TABLE gallery_albums
-    ADD COLUMN IF NOT EXISTS event_date DATE NULL AFTER description");
-
-Db::query("UPDATE gallery_albums
-    SET event_date = DATE(created_at)
-    WHERE event_date IS NULL AND created_at IS NOT NULL");
-
 function app_redirect(string $url): void
 {
     header("Location: $url");
@@ -137,45 +105,6 @@ function app_save_setting(string $key, string $value): void
         'setting_value' => $value,
         'updated_at' => app_now(),
     ));
-}
-
-function app_home_slides(): array
-{
-    $slides = array();
-
-    for ($index = 1; $index <= 4; $index++) {
-        $defaultImage = $index === 1 ? 'img/uvod.JPG' : '';
-        $defaultTitle = $index === 1 ? 'Vitejte v Radkovicich u Budce' : '';
-        $defaultText = $index === 1 ? 'Oficialni informacni portal obce. Dokumenty, fotogalerie, kontakty i informace o obci na jednom miste.' : '';
-        $defaultBadge = $index === 1 ? 'Vitejte u nas' : 'Obecni zivot';
-
-        $image = app_setting("home_slide_{$index}_image", $defaultImage);
-        $title = app_setting("home_slide_{$index}_title", $defaultTitle);
-        $text = app_setting("home_slide_{$index}_text", $defaultText);
-        $badge = app_setting("home_slide_{$index}_badge", $defaultBadge);
-
-        if ($image === '' && $title === '' && $text === '') {
-            continue;
-        }
-
-        $slides[] = array(
-            'image' => $image !== '' ? $image : 'img/uvod.JPG',
-            'title' => $title !== '' ? $title : 'Radkovice u Budce',
-            'text' => $text !== '' ? $text : 'Oficialni informacni portal obce.',
-            'badge' => $badge !== '' ? $badge : 'Vitejte u nas',
-        );
-    }
-
-    if (!$slides) {
-        $slides[] = array(
-            'image' => 'img/uvod.JPG',
-            'title' => 'Vitejte v Radkovicich u Budce',
-            'text' => 'Oficialni informacni portal obce. Dokumenty, fotogalerie, kontakty i informace o obci na jednom miste.',
-            'badge' => 'Vitejte u nas',
-        );
-    }
-
-    return $slides;
 }
 
 function app_admin_user(): ?array

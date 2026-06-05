@@ -7,6 +7,7 @@ $bodyClass = $bodyClass ?? '';
 
 $menuItems = array(
     array('key' => 'samosprava', 'label' => 'Samospráva', 'href' => 'samosprava.php'),
+    array('key' => 'knihovna', 'label' => 'Knihovna', 'href' => 'knihovna.php'),
     array('key' => 'uredni-deska', 'label' => 'Úřední deska', 'href' => 'uredni-deska.php'),
     array('key' => 'historie', 'label' => 'Historie obce', 'href' => 'historie-obce.php'),
     array('key' => 'fotogalerie', 'label' => 'Fotogalerie', 'href' => 'fotogalerie.php'),
@@ -25,6 +26,12 @@ $mobileMenuItems = array(
         'label' => 'Samospráva',
         'href' => 'samosprava.php',
         'icon' => '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 10h16M6 20h12M8 10v7M12 10v7M16 10v7M12 4l8 4H4l8-4Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    ),
+    array(
+        'key' => 'knihovna',
+        'label' => 'Knihovna',
+        'href' => 'knihovna.php',
+        'icon' => '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 5.5h9a2.5 2.5 0 0 1 2.5 2.5v10.5H8.5A2.5 2.5 0 0 0 6 21V5.5Zm0 0A2.5 2.5 0 0 0 3.5 8v10.5A2.5 2.5 0 0 1 6 16h11.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 9h5M9 12h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
     ),
     array(
         'key' => 'historie',
