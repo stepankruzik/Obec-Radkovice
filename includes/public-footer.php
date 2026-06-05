@@ -55,44 +55,6 @@
             </div>
         </div>
     </footer>
-    <nav class="mobile-bottom-nav" aria-label="Mobilní navigace">
-        <a class="<?php echo $activePage === 'home' ? 'active' : ''; ?>" href="index.php">
-            <span aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <rect x="4" y="5" width="16" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
-                    <path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-            </span>
-            <span>Aktuality</span>
-        </a>
-        <a class="<?php echo $activePage === 'uredni-deska' ? 'active' : ''; ?>" href="uredni-deska.php">
-            <span aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M8 17 4.5 7.5 8 6l3.5 9.5L8 17Zm4-1.5L8.5 6l3.5-1.5L15.5 14 12 15.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-                    <path d="M7 20h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-            </span>
-            <span>Deska</span>
-        </a>
-        <a class="<?php echo $activePage === 'fotogalerie' ? 'active' : ''; ?>" href="fotogalerie.php">
-            <span aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <rect x="4" y="5" width="16" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
-                    <path d="m8 15 2.5-2.5L13 15l2-2 3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="9" cy="10" r="1.4" fill="currentColor"/>
-                </svg>
-            </span>
-            <span>Galerie</span>
-        </a>
-        <a class="<?php echo $activePage === 'kontakty' ? 'active' : ''; ?>" href="kontakty.php">
-            <span aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M6.8 4h2.6l1.3 4-1.6 1.6a14 14 0 0 0 5 5l1.6-1.6 4 1.3v2.6a1.5 1.5 0 0 1-1.7 1.5C10.7 18 6 13.3 5.3 5.7A1.5 1.5 0 0 1 6.8 4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                </svg>
-            </span>
-            <span>Kontakt</span>
-        </a>
-    </nav>
     <script src="assets/js/theme.js" defer></script>
     <script src="assets/js/site.js" defer></script>
 </body>
