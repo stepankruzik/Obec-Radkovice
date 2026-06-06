@@ -1,5 +1,6 @@
 <?php
 require_once('app.php');
+app_require_admin();
 
 $documentsCount = (int) (Db::querySingle("SELECT COUNT(*) FROM documents") ?? 0);
 $publishedDocuments = (int) (Db::querySingle("SELECT COUNT(*) FROM documents WHERE status = 'published'") ?? 0);
@@ -103,9 +104,10 @@ require_once('includes/admin-header.php');
                         <h2>Poslední alba</h2>
                         <div class="admin-mini-list">
                             <?php foreach ($latestAlbums as $album): ?>
+                                <?php $albumCount = app_album_display_count($album); ?>
                                 <div>
                                     <strong><?php echo app_e($album['title']); ?></strong>
-                                    <span><?php echo (int) $album['item_count']; ?> fotek</span>
+                                    <span><?php echo $albumCount . ' ' . app_photo_count_label($albumCount); ?></span>
                                 </div>
                             <?php endforeach; ?>
                         </div>

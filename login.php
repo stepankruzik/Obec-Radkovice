@@ -44,11 +44,11 @@ if (isset($_POST['login'])) {
             <div class="auth-brand">
                 <span class="auth-kicker">Obecní systém</span>
                 <h1>Radkovice u Budče</h1>
-                <p>Vstup do administrace pro správu dokumentů, aktualit, fotogalerie a nastavení obecního webu.</p>
+                <p>Vstup do administrace pro správu dokumentů, aktualit, fotogalerie i homepage carouselu.</p>
                 <div class="auth-points">
                     <div><strong>Úřední deska</strong><span>Správa zveřejňovaných dokumentů a vyhlášek.</span></div>
                     <div><strong>Aktuality</strong><span>Rychlé publikování novinek a kulturních akcí.</span></div>
-                    <div><strong>Fotogalerie</strong><span>Nahrávání alb a editace fotografií obce.</span></div>
+                    <div><strong>Carousel homepage</strong><span>Možnost přidávat nové hlavní fotky přímo z administrace.</span></div>
                 </div>
             </div>
         </section>

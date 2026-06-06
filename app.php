@@ -107,6 +107,17 @@ function app_save_setting(string $key, string $value): void
     ));
 }
 
+function app_setting_json(string $key, array $default = array()): array
+{
+    $value = app_setting($key, '');
+    if ($value === '') {
+        return $default;
+    }
+
+    $decoded = json_decode($value, true);
+    return is_array($decoded) ? $decoded : $default;
+}
+
 function app_admin_user(): ?array
 {
     if (empty($_SESSION['user_id'])) {
@@ -239,6 +250,39 @@ function app_album_display_count(array $album): int
 {
     $photoCount = (int) ($album['item_count'] ?? 0);
     return $photoCount + (!empty($album['cover_image']) ? 1 : 0);
+}
+
+function app_home_hero_slides(): array
+{
+    $slides = app_setting_json('hero_carousel', array());
+    $normalized = array();
+    $defaultTitle = 'Vítejte v Radkovicích u Budče';
+    $defaultText = 'Oficiální informační portál malé obce v srdci Vysočiny. Přehledné dokumenty, fotogalerie, kontakty i informace o obci na jednom místě.';
+
+    foreach ($slides as $slide) {
+        $image = trim((string) ($slide['image'] ?? ''));
+        if ($image === '') {
+            continue;
+        }
+
+        $normalized[] = array(
+            'image' => $image,
+            'title' => trim((string) ($slide['title'] ?? '')) !== '' ? trim((string) ($slide['title'] ?? '')) : $defaultTitle,
+            'text' => trim((string) ($slide['text'] ?? '')) !== '' ? trim((string) ($slide['text'] ?? '')) : $defaultText,
+        );
+    }
+
+    if ($normalized) {
+        return $normalized;
+    }
+
+        return array(
+        array(
+            'image' => 'img/uvod.JPG',
+            'title' => $defaultTitle,
+            'text' => $defaultText,
+        ),
+    );
 }
 
 function app_photo_count_label(int $count): string

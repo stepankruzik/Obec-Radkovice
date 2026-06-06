@@ -12,8 +12,8 @@
     "tomorrow": {
         "label": "Zítra",
         "description": "Polojasno",
-        "temp": 26,
-        "night_temp": 26,
+        "temp": 27,
+        "night_temp": 27,
         "icon": "sun"
     }
 }

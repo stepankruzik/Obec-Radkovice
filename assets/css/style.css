@@ -225,15 +225,9 @@ textarea {
 .hero {
     position: relative;
     overflow: hidden;
-    min-height: 720px;
-    padding: 56px 0 150px;
-    background:
-        linear-gradient(180deg, rgba(19, 20, 18, 0.08), rgba(19, 20, 18, 0.26)),
-        radial-gradient(circle at 20% 80%, rgba(215, 179, 63, 0.42), transparent 20%),
-        linear-gradient(180deg, rgba(28, 42, 26, 0.2) 0%, rgba(33, 52, 31, 0.12) 22%, rgba(25, 34, 24, 0.08) 44%, rgba(0, 0, 0, 0) 100%),
-        url("../../img/uvod.JPG");
-    background-size: cover;
-    background-position: center;
+    min-height: calc(100vh - 82px);
+    padding: 0;
+    background: #1b1613;
 }
 
 .hero::after {
@@ -249,7 +243,92 @@ textarea {
     z-index: 1;
     max-width: 700px;
     color: #ffffff;
-    padding-top: 46px;
+    padding-top: 102px;
+    padding-bottom: 158px;
+}
+
+.hero-carousel {
+    position: relative;
+    min-height: inherit;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    align-items: stretch;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.55s ease;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-slide.is-active {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.hero-slide-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(16, 17, 15, 0.14), rgba(16, 17, 15, 0.34)),
+        radial-gradient(circle at 20% 82%, rgba(215, 179, 63, 0.3), transparent 20%),
+        linear-gradient(180deg, rgba(21, 48, 26, 0.2) 0%, rgba(22, 34, 23, 0.12) 28%, rgba(0, 0, 0, 0) 100%);
+}
+
+.hero-carousel-control {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    border: 0;
+    border-radius: 50%;
+    color: #ffffff;
+    background: rgba(18, 29, 22, 0.44);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.hero-carousel-prev {
+    left: 24px;
+}
+
+.hero-carousel-next {
+    right: 24px;
+}
+
+.hero-carousel-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 34px;
+    z-index: 3;
+    display: flex;
+    gap: 10px;
+    transform: translateX(-50%);
+}
+
+.hero-carousel-dot {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 0 0 2px rgba(24, 38, 20, 0.42);
+    cursor: pointer;
+}
+
+.hero-carousel-dot.is-active {
+    background: var(--green);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9);
 }
 
 .hero-meta {
@@ -1921,8 +2000,8 @@ textarea {
     }
 
     .hero {
-        min-height: 250px;
-        padding: 0 0 18px;
+        min-height: 84svh;
+        padding: 0;
         border-bottom: 1px solid rgba(184, 15, 23, 0.06);
     }
 
@@ -1966,12 +2045,20 @@ textarea {
     .hero-content {
         max-width: none;
         padding-top: 86px;
-        padding-bottom: 0;
+        padding-bottom: 110px;
     }
 
     .hero h1 {
         margin-bottom: 16px;
         font-size: 2.1rem;
+    }
+
+    .hero-carousel-control {
+        display: none;
+    }
+
+    .hero-carousel-dots {
+        bottom: 18px;
     }
 
     .search-panel {

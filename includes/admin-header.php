@@ -34,15 +34,19 @@ $adminFlash = app_get_flash();
 
             <nav class="admin-nav">
                 <a class="<?php echo $adminActiveNav === 'dashboard' ? 'active' : ''; ?>" href="admin.php">
-                    <span class="admin-nav-icon">⌘</span>
+                    <span class="admin-nav-icon">◘</span>
                     <span>Dashboard</span>
                 </a>
-                <a class="<?php echo $adminActiveNav === 'documents' ? 'active' : ''; ?>" href="admin-documents.php">
+                <a class="<?php echo $adminActiveNav === 'carousel' ? 'active' : ''; ?>" href="admin-carousel.php">
                     <span class="admin-nav-icon">▣</span>
+                    <span>Carousel</span>
+                </a>
+                <a class="<?php echo $adminActiveNav === 'documents' ? 'active' : ''; ?>" href="admin-documents.php">
+                    <span class="admin-nav-icon">▤</span>
                     <span>Dokumenty</span>
                 </a>
                 <a class="<?php echo $adminActiveNav === 'gallery' ? 'active' : ''; ?>" href="admin-gallery.php">
-                    <span class="admin-nav-icon">◫</span>
+                    <span class="admin-nav-icon">▥</span>
                     <span>Fotogalerie</span>
                 </a>
             </nav>
@@ -51,7 +55,7 @@ $adminFlash = app_get_flash();
 
             <nav class="admin-nav admin-nav-secondary">
                 <a class="<?php echo $adminActiveNav === 'users' ? 'active' : ''; ?>" href="admin-users.php">
-                    <span class="admin-nav-icon">◌</span>
+                    <span class="admin-nav-icon">◔</span>
                     <span>Správa uživatelů</span>
                 </a>
                 <a class="<?php echo $adminActiveNav === 'settings' ? 'active' : ''; ?>" href="admin-settings.php">
@@ -80,7 +84,7 @@ $adminFlash = app_get_flash();
                 <div class="admin-top-actions">
                     <form class="admin-search" method="get">
                         <span>⌕</span>
-                        <input type="search" name="q" value="<?php echo app_e($_GET['q'] ?? ''); ?>" placeholder="Hledat v dokumentech...">
+                        <input type="search" name="q" value="<?php echo app_e($_GET['q'] ?? ''); ?>" placeholder="Hledat v administraci...">
                     </form>
                     <button class="admin-theme-toggle" type="button" data-theme-toggle aria-label="Přepnout tmavý režim">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">

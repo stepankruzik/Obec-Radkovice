@@ -4,6 +4,7 @@ require_once('app.php');
 $latestDocuments = Db::queryAll("SELECT * FROM documents WHERE is_visible = 1 ORDER BY published_at DESC, id DESC LIMIT 3") ?: array();
 $galleryAlbums = Db::queryAll("SELECT * FROM gallery_albums WHERE is_visible = 1 ORDER BY updated_at DESC, id DESC LIMIT 2") ?: array();
 $weather = app_fetch_weather();
+$heroSlides = app_home_hero_slides();
 
 $pageTitle = 'Radkovice u Budče';
 $activePage = 'home';
@@ -11,28 +12,59 @@ require_once('includes/public-header.php');
 ?>
 
     <section class="hero home-hero">
-        <div class="shell hero-content">
-            <div class="hero-meta desktop-only">
-                <span class="hero-badge">Kraj Vysočina</span>
-                <span>
-                    <span class="hero-meta-icon" aria-hidden="true">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <rect x="4" y="5" width="16" height="15" rx="3" stroke="currentColor" stroke-width="1.8"/>
-                            <path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                        </svg>
-                    </span>
-                    <?php echo date('j. n. Y'); ?>
-                </span>
-                <span>Oficiální portál obce</span>
-            </div>
+        <div class="hero-carousel" data-carousel>
+            <?php foreach ($heroSlides as $index => $slide): ?>
+                <article
+                    class="hero-slide <?php echo $index === 0 ? 'is-active' : ''; ?>"
+                    data-carousel-slide
+                    data-carousel-title="<?php echo app_e($slide['title']); ?>"
+                    data-carousel-text="<?php echo app_e($slide['text']); ?>"
+                    style="background-image: url('<?php echo app_e($slide['image']); ?>');"
+                >
+                    <div class="hero-slide-overlay"></div>
+                    <div class="shell hero-content">
+                        <div class="hero-meta desktop-only">
+                            <span class="hero-badge">Kraj Vysočina</span>
+                            <span>
+                                <span class="hero-meta-icon" aria-hidden="true">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <rect x="4" y="5" width="16" height="15" rx="3" stroke="currentColor" stroke-width="1.8"/>
+                                        <path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                    </svg>
+                                </span>
+                                <?php echo date('j. n. Y'); ?>
+                            </span>
+                            <span>Oficiální portál obce</span>
+                        </div>
 
-            <h1>Vítejte v Radkovicích u Budče</h1>
-            <p class="desktop-only">Oficiální informační portál malé obce v srdci Vysočiny. Přehledné dokumenty, fotogalerie, kontakty i informace o obci na jednom místě.</p>
+                        <h1><?php echo app_e($slide['title']); ?></h1>
+                        <p class="desktop-only"><?php echo app_e($slide['text']); ?></p>
 
-            <form class="search-panel" action="search.php" method="get">
-                <input type="search" name="q" placeholder="Co hledáte?" required>
-                <button class="button desktop-only" type="submit">Hledat</button>
-            </form>
+                        <form class="search-panel" action="search.php" method="get">
+                            <input type="search" name="q" placeholder="Co hledáte?" required>
+                            <button class="button desktop-only" type="submit">Hledat</button>
+                        </form>
+                    </div>
+                </article>
+            <?php endforeach; ?>
+
+            <?php if (count($heroSlides) > 1): ?>
+                <button class="hero-carousel-control hero-carousel-prev" type="button" data-carousel-prev aria-label="Předchozí slide">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="m15 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="hero-carousel-control hero-carousel-next" type="button" data-carousel-next aria-label="Další slide">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="hero-carousel-dots" aria-label="Přepnutí slide">
+                    <?php foreach ($heroSlides as $index => $slide): ?>
+                        <button class="hero-carousel-dot <?php echo $index === 0 ? 'is-active' : ''; ?>" type="button" data-carousel-dot data-carousel-index="<?php echo (int) $index; ?>" aria-label="Slide <?php echo (int) ($index + 1); ?>"></button>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </section>
 

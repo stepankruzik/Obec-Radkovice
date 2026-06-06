@@ -109,8 +109,10 @@
         var dots = Array.prototype.slice.call(carousel.querySelectorAll('[data-carousel-dot]'));
         var prev = carousel.querySelector('[data-carousel-prev]');
         var next = carousel.querySelector('[data-carousel-next]');
+        var searchInputs = Array.prototype.slice.call(carousel.querySelectorAll('.search-panel input[type="search"]'));
         var currentSlide = 0;
         var timer = null;
+        var isPaused = false;
 
         function renderSlide(index) {
             if (!slides.length) {
@@ -133,11 +135,16 @@
                 window.clearInterval(timer);
             }
 
-            if (slides.length > 1) {
+            if (slides.length > 1 && !isPaused) {
                 timer = window.setInterval(function () {
                     renderSlide(currentSlide + 1);
                 }, 6000);
             }
+        }
+
+        function setPausedState(shouldPause) {
+            isPaused = shouldPause;
+            restartTimer();
         }
 
         if (prev) {
@@ -158,6 +165,25 @@
             dot.addEventListener('click', function () {
                 renderSlide(parseInt(dot.getAttribute('data-carousel-index') || '0', 10));
                 restartTimer();
+            });
+        });
+
+        searchInputs.forEach(function (input) {
+            input.addEventListener('focus', function () {
+                setPausedState(true);
+            });
+
+            input.addEventListener('blur', function () {
+                setPausedState(false);
+            });
+
+            input.addEventListener('input', function () {
+                var value = input.value;
+                searchInputs.forEach(function (otherInput) {
+                    if (otherInput !== input) {
+                        otherInput.value = value;
+                    }
+                });
             });
         });
 
