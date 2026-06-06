@@ -11,7 +11,23 @@ if (!$album) {
 }
 
 $photos = Db::queryAll("SELECT * FROM gallery_photos WHERE album_id = ? AND is_visible = 1 ORDER BY sort_order ASC, id ASC", $id) ?: array();
+$albumImages = array();
 
+if (!empty($album['cover_image'])) {
+    $albumImages[] = array(
+        'path' => $album['cover_image'],
+        'title' => $album['title'],
+    );
+}
+
+foreach ($photos as $photo) {
+    $albumImages[] = array(
+        'path' => $photo['image_path'],
+        'title' => trim((string) ($photo['title'] ?? '')) !== '' ? $photo['title'] : $album['title'],
+    );
+}
+
+$photoCount = app_album_display_count($album);
 $pageTitle = $album['title'] . ' | Fotogalerie';
 $activePage = 'fotogalerie';
 $bodyClass = 'subpage-body';
@@ -23,29 +39,19 @@ require_once('includes/public-header.php');
             <p class="page-kicker"><?php echo app_e($album['category']); ?></p>
             <h1><?php echo app_e($album['title']); ?></h1>
             <p class="page-lead"><?php echo app_e($album['description']); ?></p>
-        </section>
-
-        <section class="shell album-hero-card">
-            <a
-                class="album-hero-image-link"
-                href="<?php echo app_e($album['cover_image']); ?>"
-                data-lightbox-item
-                data-lightbox-src="<?php echo app_e($album['cover_image']); ?>"
-            >
-                <img src="<?php echo app_e($album['cover_image']); ?>" alt="<?php echo app_e($album['title']); ?>">
-            </a>
+            <p class="album-count"><?php echo $photoCount . ' ' . app_photo_count_label($photoCount); ?></p>
         </section>
 
         <section class="shell album-photo-grid">
-            <?php foreach ($photos as $photo): ?>
+            <?php foreach ($albumImages as $image): ?>
                 <a
                     class="album-photo-card"
-                    href="<?php echo app_e($photo['image_path']); ?>"
+                    href="<?php echo app_e($image['path']); ?>"
                     data-lightbox-item
-                    data-lightbox-src="<?php echo app_e($photo['image_path']); ?>"
+                    data-lightbox-src="<?php echo app_e($image['path']); ?>"
                     aria-label="Otevřít fotografii"
                 >
-                    <img src="<?php echo app_e($photo['image_path']); ?>" alt="<?php echo app_e($photo['title']); ?>">
+                    <img src="<?php echo app_e($image['path']); ?>" alt="<?php echo app_e($image['title']); ?>">
                 </a>
             <?php endforeach; ?>
         </section>

@@ -235,6 +235,32 @@ function app_refresh_album_count(int $albumId): void
     Db::update('gallery_albums', array('item_count' => $count, 'updated_at' => app_now()), 'WHERE id = ?', $albumId);
 }
 
+function app_album_display_count(array $album): int
+{
+    $photoCount = (int) ($album['item_count'] ?? 0);
+    return $photoCount + (!empty($album['cover_image']) ? 1 : 0);
+}
+
+function app_photo_count_label(int $count): string
+{
+    $mod100 = $count % 100;
+    $mod10 = $count % 10;
+
+    if ($mod100 >= 11 && $mod100 <= 14) {
+        return 'fotografií';
+    }
+
+    if ($mod10 === 1) {
+        return 'fotografie';
+    }
+
+    if ($mod10 >= 2 && $mod10 <= 4) {
+        return 'fotografie';
+    }
+
+    return 'fotografií';
+}
+
 function app_http_get_json(string $url): ?array
 {
     $context = stream_context_create(array(

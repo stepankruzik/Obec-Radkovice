@@ -4,16 +4,16 @@
     "error": null,
     "current": {
         "label": "Dnes",
-        "description": "Oblačno",
-        "temp": 12,
-        "night_temp": 11,
+        "description": "Jasno",
+        "temp": 15,
+        "night_temp": 15,
         "icon": "sun"
     },
     "tomorrow": {
         "label": "Zítra",
-        "description": "Jasno",
-        "temp": 23,
-        "night_temp": 22,
+        "description": "Polojasno",
+        "temp": 26,
+        "night_temp": 26,
         "icon": "sun"
     }
 }
