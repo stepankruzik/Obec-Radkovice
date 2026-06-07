@@ -25,8 +25,39 @@ if (isset($_POST['add_hero_slide'])) {
     app_redirect('admin-carousel.php#hero-carousel-editor');
 }
 
+if (isset($_POST['save_hero_slide_order'])) {
+    $slides = app_setting_json('hero_carousel', array());
+    $postedOrder = $_POST['slide_order'] ?? array();
+
+    if (!is_array($postedOrder)) {
+        $postedOrder = array();
+    }
+
+    $postedOrder = array_map('intval', $postedOrder);
+    $postedOrder = array_values(array_unique($postedOrder));
+    $slideIndexes = array_keys($slides);
+    sort($postedOrder);
+    $expectedOrder = $slideIndexes;
+    sort($expectedOrder);
+
+    if ($slides && $postedOrder === $expectedOrder) {
+        $reorderedSlides = array();
+        foreach ($_POST['slide_order'] as $slideIndex) {
+            $slideIndex = (int) $slideIndex;
+            $reorderedSlides[] = $slides[$slideIndex];
+        }
+
+        app_save_setting('hero_carousel', json_encode(array_values($reorderedSlides), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+        app_set_flash('success', 'Pořadí slidů bylo upraveno.');
+    } else {
+        app_set_flash('error', 'Pořadí slidů se nepodařilo uložit.');
+    }
+
+    app_redirect('admin-carousel.php#hero-carousel-editor');
+}
+
 if (isset($_POST['remove_hero_slide'])) {
-    $index = (int) ($_POST['slide_index'] ?? -1);
+    $index = (int) $_POST['remove_hero_slide'];
     $slides = app_setting_json('hero_carousel', array());
 
     if (isset($slides[$index])) {
@@ -38,23 +69,6 @@ if (isset($_POST['remove_hero_slide'])) {
         array_splice($slides, $index, 1);
         app_save_setting('hero_carousel', json_encode(array_values($slides), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
         app_set_flash('success', 'Slide na homepage byl odebrán.');
-    }
-
-    app_redirect('admin-carousel.php#hero-carousel-editor');
-}
-
-if (isset($_POST['move_hero_slide'])) {
-    $index = (int) ($_POST['slide_index'] ?? -1);
-    $direction = $_POST['direction'] ?? '';
-    $slides = app_setting_json('hero_carousel', array());
-    $targetIndex = $direction === 'up' ? $index - 1 : $index + 1;
-
-    if (isset($slides[$index], $slides[$targetIndex])) {
-        $current = $slides[$index];
-        $slides[$index] = $slides[$targetIndex];
-        $slides[$targetIndex] = $current;
-        app_save_setting('hero_carousel', json_encode(array_values($slides), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
-        app_set_flash('success', 'Pořadí slidů bylo upraveno.');
     }
 
     app_redirect('admin-carousel.php#hero-carousel-editor');
@@ -98,39 +112,42 @@ require_once('includes/admin-header.php');
                         </form>
                     </div>
 
-                    <div class="admin-carousel-list">
-                        <?php if ($heroSlides): ?>
-                            <?php foreach ($heroSlides as $index => $slide): ?>
-                                <article class="admin-carousel-item">
-                                    <img src="<?php echo app_e($slide['image'] ?? ''); ?>" alt="<?php echo app_e($slide['title'] ?? 'Slide homepage'); ?>">
-                                    <div class="admin-carousel-copy">
-                                        <strong><?php echo ($index + 1) . '. ' . app_e($slide['title'] ?? 'Bez nadpisu'); ?></strong>
-                                        <span><?php echo app_e($slide['text'] ?? ''); ?></span>
+                    <div class="admin-carousel-list-wrap">
+                        <div class="admin-carousel-help">
+                            Přetáhněte fotky myší a pak klikněte na uložit pořadí.
+                        </div>
+
+                        <form method="post" class="admin-carousel-order-form" data-carousel-sort-form>
+                            <div class="admin-carousel-list" data-carousel-sortable>
+                                <?php if ($heroSlides): ?>
+                                    <?php foreach ($heroSlides as $index => $slide): ?>
+                                        <article class="admin-carousel-item" data-slide-item draggable="true">
+                                            <input type="hidden" name="slide_order[]" value="<?php echo (int) $index; ?>" data-slide-order>
+                                            <button class="admin-carousel-handle" type="button" aria-label="Přetáhnout slide" title="Přetáhnout slide">⋮⋮</button>
+                                            <img src="<?php echo app_e($slide['image'] ?? ''); ?>" alt="<?php echo app_e($slide['title'] ?? 'Slide homepage'); ?>">
+                                            <div class="admin-carousel-copy">
+                                                <strong><?php echo ($index + 1) . '. ' . app_e($slide['title'] ?? 'Bez nadpisu'); ?></strong>
+                                                <span><?php echo app_e($slide['text'] ?? ''); ?></span>
+                                            </div>
+                                            <div class="admin-carousel-actions">
+                                                <button class="action-link action-link-danger" type="submit" name="remove_hero_slide" value="<?php echo (int) $index; ?>">Odebrat</button>
+                                            </div>
+                                        </article>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <div class="admin-upload-empty">
+                                        <strong>Zatím nejsou přidané žádné slidy.</strong>
+                                        <span>Pokud nic nenastavíte, homepage použije výchozí úvodní fotografii.</span>
                                     </div>
-                                    <div class="admin-carousel-actions">
-                                        <form method="post" class="inline-form">
-                                            <input type="hidden" name="slide_index" value="<?php echo (int) $index; ?>">
-                                            <input type="hidden" name="direction" value="up">
-                                            <button class="action-link" type="submit" name="move_hero_slide" <?php echo $index === 0 ? 'disabled' : ''; ?>>Nahoru</button>
-                                        </form>
-                                        <form method="post" class="inline-form">
-                                            <input type="hidden" name="slide_index" value="<?php echo (int) $index; ?>">
-                                            <input type="hidden" name="direction" value="down">
-                                            <button class="action-link" type="submit" name="move_hero_slide" <?php echo $index === count($heroSlides) - 1 ? 'disabled' : ''; ?>>Dolů</button>
-                                        </form>
-                                        <form method="post" class="inline-form">
-                                            <input type="hidden" name="slide_index" value="<?php echo (int) $index; ?>">
-                                            <button class="action-link action-link-danger" type="submit" name="remove_hero_slide">Odebrat</button>
-                                        </form>
-                                    </div>
-                                </article>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <div class="admin-upload-empty">
-                                <strong>Zatím nejsou přidané žádné slidy.</strong>
-                                <span>Pokud nic nenastavíte, homepage použije výchozí úvodní fotografii.</span>
+                                <?php endif; ?>
                             </div>
-                        <?php endif; ?>
+
+                            <?php if ($heroSlides): ?>
+                                <div class="editor-actions editor-actions-full">
+                                    <button class="admin-button" type="submit" name="save_hero_slide_order">Uložit pořadí</button>
+                                </div>
+                            <?php endif; ?>
+                        </form>
                     </div>
                 </div>
             </section>

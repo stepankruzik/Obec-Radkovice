@@ -7,10 +7,10 @@ $bodyClass = $bodyClass ?? '';
 
 $menuItems = array(
     array('key' => 'samosprava', 'label' => 'Samospráva', 'href' => 'samosprava.php'),
-    array('key' => 'knihovna', 'label' => 'Knihovna', 'href' => 'knihovna.php'),
     array('key' => 'uredni-deska', 'label' => 'Úřední deska', 'href' => 'uredni-deska.php'),
     array('key' => 'historie', 'label' => 'Historie obce', 'href' => 'historie-obce.php'),
     array('key' => 'fotogalerie', 'label' => 'Fotogalerie', 'href' => 'fotogalerie.php'),
+    array('key' => 'knihovna', 'label' => 'Knihovna', 'href' => 'knihovna.php'),
     array('key' => 'kontakty', 'label' => 'Kontakty', 'href' => 'kontakty.php'),
 );
 
@@ -98,7 +98,6 @@ $mobileMenuItems = array(
                         <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
                     </svg>
                 </button>
-                <a class="button" href="admin.php">E-podatelna</a>
             </div>
         </div>
     </header>
@@ -128,14 +127,6 @@ $mobileMenuItems = array(
             </div>
 
             <div class="mobile-menu-card">
-                <a class="mobile-menu-mailbox" href="admin.php">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M4 7h16v10H4z" stroke="currentColor" stroke-width="1.8"/>
-                        <path d="m5 8 7 5 7-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>E-podatelna</span>
-                </a>
-
                 <div class="mobile-menu-language" aria-label="Jazyk">
                     <button class="is-active" type="button">CZ</button>
                     <button type="button" disabled>EN</button>

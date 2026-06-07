@@ -678,15 +678,53 @@ img {
     gap: 14px;
 }
 
+.admin-carousel-list-wrap {
+    display: grid;
+    gap: 14px;
+}
+
+.admin-carousel-help {
+    color: #816866;
+    font-size: 0.95rem;
+}
+
+.admin-carousel-order-form {
+    display: grid;
+    gap: 16px;
+}
+
 .admin-carousel-item {
     display: grid;
-    grid-template-columns: 120px minmax(0, 1fr) auto;
+    grid-template-columns: auto 120px minmax(0, 1fr) auto;
     gap: 16px;
     align-items: center;
     padding: 14px;
     border-radius: 20px;
     background: #fff8f4;
     border: 1px solid rgba(184, 15, 23, 0.08);
+    cursor: grab;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.admin-carousel-item.is-dragging {
+    opacity: 0.72;
+    cursor: grabbing;
+}
+
+.admin-carousel-item.is-drop-target {
+    border-color: rgba(18, 129, 63, 0.42);
+    box-shadow: 0 0 0 3px rgba(18, 129, 63, 0.12);
+    transform: translateY(-2px);
+}
+
+.admin-carousel-handle {
+    border: 0;
+    padding: 0;
+    color: #816866;
+    background: transparent;
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: grab;
 }
 
 .admin-carousel-item img {
@@ -1532,6 +1570,11 @@ html[data-theme="dark"] .auth-alert {
 html[data-theme="dark"] .admin-carousel-item {
     background: #2a1f1f;
     border-color: rgba(255, 107, 113, 0.08);
+}
+
+html[data-theme="dark"] .admin-carousel-help,
+html[data-theme="dark"] .admin-carousel-handle {
+    color: #c5b0ad;
 }
 
 html[data-theme="dark"] .admin-carousel-copy strong {

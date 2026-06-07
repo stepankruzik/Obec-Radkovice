@@ -22,17 +22,16 @@
                                 <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/>
                             </svg>
                         </a>
-    
                     </div>
                 </div>
 
                 <div>
                     <h4>Informace</h4>
                     <div class="footer-links">
-                        <a href="#">Povinné informace</a>
-                        <a href="#">Ochrana soukromí</a>
-                        <a href="#">Prohlášení o přístupnosti</a>
-                        <a href="#">Mapa stránek</a>
+                        <a href="informace-o-webu.php#povinne-informace">Povinné informace</a>
+                        <a href="informace-o-webu.php#ochrana-soukromi">Ochrana soukromí</a>
+                        <a href="informace-o-webu.php#pristupnost">Prohlášení o přístupnosti</a>
+                        <a href="informace-o-webu.php#mapa-stranek">Mapa stránek</a>
                     </div>
                 </div>
 
@@ -43,6 +42,7 @@
                         <a href="uredni-deska.php">Úřední deska</a>
                         <a href="historie-obce.php">Historie obce</a>
                         <a href="fotogalerie.php">Fotogalerie</a>
+                        <a href="knihovna.php">Knihovna</a>
                         <a href="kontakty.php">Kontakty</a>
                     </div>
                 </div>
@@ -52,6 +52,7 @@
                 <span>&copy; 2026 Obec Radkovice u Budče. Všechna práva vyhrazena.</span>
                 <span>Poslední aktualizace: 31. 5. 2026</span>
                 <span>Region Vysočina</span>
+                <a class="copyright-admin-link" href="login.php" aria-label="Správa webu">Správa webu</a>
             </div>
         </div>
     </footer>

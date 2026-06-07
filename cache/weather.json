@@ -4,16 +4,16 @@
     "error": null,
     "current": {
         "label": "Dnes",
-        "description": "Jasno",
-        "temp": 15,
-        "night_temp": 15,
+        "description": "Polojasno",
+        "temp": 23,
+        "night_temp": 23,
         "icon": "sun"
     },
     "tomorrow": {
         "label": "Zítra",
         "description": "Polojasno",
-        "temp": 27,
-        "night_temp": 27,
+        "temp": 24,
+        "night_temp": 24,
         "icon": "sun"
     }
 }

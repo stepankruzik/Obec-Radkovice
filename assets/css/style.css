@@ -988,6 +988,70 @@ textarea {
     text-underline-offset: 3px;
 }
 
+.info-page-grid {
+    display: grid;
+    gap: 24px;
+    padding: 0 0 72px;
+}
+
+.info-page-card {
+    padding: 30px 32px;
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at top right, rgba(31, 122, 60, 0.08), transparent 26%),
+        linear-gradient(180deg, rgba(255, 250, 247, 0.98), rgba(252, 255, 252, 0.96));
+    border: 1px solid rgba(184, 15, 23, 0.08);
+    box-shadow: var(--shadow);
+}
+
+.info-page-card h2 {
+    margin: 0 0 14px;
+    color: var(--text-dark);
+    font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+}
+
+.info-page-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.75;
+}
+
+.info-page-card p + p {
+    margin-top: 14px;
+}
+
+.info-page-actions,
+.info-sitemap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.info-sitemap a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 999px;
+    color: var(--green-deep);
+    background: rgba(31, 122, 60, 0.1);
+    font-weight: 700;
+}
+
+.copyright-admin-link {
+    margin-left: auto;
+    opacity: 0.32;
+    font-size: 0.84rem;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.copyright-admin-link:hover,
+.copyright-admin-link:focus-visible {
+    opacity: 0.82;
+    color: var(--green-deep);
+}
+
 .filter-row {
     display: flex;
     flex-wrap: wrap;
@@ -2184,6 +2248,11 @@ textarea {
         border-radius: 12px;
     }
 
+    .mobile-panel-board .mobile-board-item {
+        min-height: 104px;
+        padding-right: 42px;
+    }
+
     .mobile-board-item span:last-child {
         position: absolute;
         right: 14px;
@@ -2452,6 +2521,7 @@ html[data-theme="dark"] .news-card,
 html[data-theme="dark"] .history-event,
 html[data-theme="dark"] .history-photo-slot,
 html[data-theme="dark"] .gallery-tile,
+html[data-theme="dark"] .info-page-card,
 html[data-theme="dark"] .contact-detail-card,
 html[data-theme="dark"] .office-hours-card,
 html[data-theme="dark"] .governance-card {
@@ -2504,6 +2574,25 @@ html[data-theme="dark"] .filter-chip.active,
 html[data-theme="dark"] .page-dot.active {
     background: linear-gradient(135deg, #d73b42, #ac2026);
     color: #ffffff;
+}
+
+html[data-theme="dark"] .info-sitemap a {
+    color: #ebfff0;
+    background: rgba(41, 101, 55, 0.48);
+}
+
+html[data-theme="dark"] .library-card-main {
+    background:
+        radial-gradient(circle at top right, rgba(104, 192, 122, 0.08), transparent 28%),
+        linear-gradient(180deg, rgba(42, 30, 30, 0.98), rgba(34, 24, 24, 0.98));
+}
+
+html[data-theme="dark"] .library-card-main::after {
+    border-color: rgba(255, 107, 113, 0.12);
+}
+
+html[data-theme="dark"] .copyright-admin-link {
+    color: #d9c3c0;
 }
 
 html[data-theme="dark"] .download-button {
@@ -2599,6 +2688,45 @@ html[data-theme="dark"] .mobile-panel {
     background: rgba(28, 20, 20, 0.98);
 }
 
+html[data-theme="dark"] .mobile-panel-head,
+html[data-theme="dark"] .mobile-panel-head h2,
+html[data-theme="dark"] .mobile-head-link,
+html[data-theme="dark"] .mobile-news-item,
+html[data-theme="dark"] .mobile-contact-line,
+html[data-theme="dark"] .mobile-hours,
+html[data-theme="dark"] .mobile-footer-card,
+html[data-theme="dark"] .mobile-footer-links a {
+    color: #f5ebeb;
+}
+
+html[data-theme="dark"] .mobile-board-item {
+    background: rgba(45, 31, 31, 0.96);
+    color: #f7eded;
+    border: 1px solid rgba(255, 107, 113, 0.1);
+}
+
+html[data-theme="dark"] .mobile-board-item small {
+    color: #d5b9b6;
+}
+
+html[data-theme="dark"] .mobile-board-item,
+html[data-theme="dark"] .mobile-board-item:visited,
+html[data-theme="dark"] .mobile-board-item:hover,
+html[data-theme="dark"] .mobile-board-item:active {
+    color: #f7eded;
+}
+
+html[data-theme="dark"] .mobile-board-item strong,
+html[data-theme="dark"] .mobile-board-item span:last-child {
+    color: #fff6f4;
+}
+
+html[data-theme="dark"] .mobile-outline-button {
+    color: #effbef;
+    background: linear-gradient(135deg, #2f8e4a, #256d39);
+    box-shadow: 0 14px 26px rgba(20, 74, 39, 0.28);
+}
+
 html[data-theme="dark"] .mobile-panel-head-primary,
 html[data-theme="dark"] .mobile-floating-button {
     background: linear-gradient(135deg, #d73b42, #ac2026);
@@ -2649,10 +2777,48 @@ html[data-theme="dark"] .mobile-floating-button {
         z-index: 40;
         opacity: 0;
         pointer-events: none;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
         background:
             linear-gradient(180deg, rgba(252, 247, 241, 0.98), rgba(248, 243, 236, 0.98)),
             radial-gradient(circle at right bottom, rgba(31, 122, 60, 0.1), transparent 32%);
         transition: opacity 0.24s ease;
+    }
+
+    html[data-theme="dark"] .mobile-panel,
+    html[data-theme="dark"] .mobile-panel-board {
+        background: rgba(28, 20, 20, 0.98) !important;
+    }
+
+    html[data-theme="dark"] .mobile-panel-board .mobile-board-item,
+    html[data-theme="dark"] .mobile-board-item {
+        background: rgba(45, 31, 31, 0.96) !important;
+        color: #f7eded !important;
+        border: 1px solid rgba(255, 107, 113, 0.1) !important;
+    }
+
+    html[data-theme="dark"] .mobile-panel-board .mobile-board-item strong,
+    html[data-theme="dark"] .mobile-board-item strong {
+        color: #fff6f4 !important;
+        text-shadow: none !important;
+    }
+
+    html[data-theme="dark"] .mobile-panel-board .mobile-board-item small,
+    html[data-theme="dark"] .mobile-board-item small {
+        color: #d5b9b6 !important;
+    }
+
+    html[data-theme="dark"] .mobile-panel-board .mobile-board-item span:last-child,
+    html[data-theme="dark"] .mobile-board-item span:last-child {
+        color: #ff8b90 !important;
+    }
+
+    html[data-theme="dark"] .mobile-outline-button {
+        color: #effbef !important;
+        background: linear-gradient(135deg, #2f8e4a, #256d39) !important;
+        border-color: rgba(104, 192, 122, 0.28) !important;
     }
 
     body.mobile-nav-open .mobile-menu-overlay {
@@ -2661,6 +2827,7 @@ html[data-theme="dark"] .mobile-floating-button {
     }
 
     .mobile-menu-frame {
+        min-height: 100dvh;
         min-height: 100%;
         display: flex;
         flex-direction: column;

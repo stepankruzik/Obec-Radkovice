@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Přihlášení do administrace</title>
+    <title>Přihlášení do správy webu</title>
     <script>
         (function () {
             var savedTheme = localStorage.getItem('site-theme');
@@ -42,13 +42,13 @@ if (isset($_POST['login'])) {
         <section class="auth-visual">
             <div class="auth-overlay"></div>
             <div class="auth-brand">
-                <span class="auth-kicker">Obecní systém</span>
-                <h1>Radkovice u Budče</h1>
-                <p>Vstup do administrace pro správu dokumentů, aktualit, fotogalerie i homepage carouselu.</p>
+                <span class="auth-kicker">Interní přístup</span>
+                <h1>Správa webu obce</h1>
+                <p>Vstup do administrace pro správu dokumentů, fotogalerie, uživatelů a hlavních prvků veřejného webu.</p>
                 <div class="auth-points">
-                    <div><strong>Úřední deska</strong><span>Správa zveřejňovaných dokumentů a vyhlášek.</span></div>
-                    <div><strong>Aktuality</strong><span>Rychlé publikování novinek a kulturních akcí.</span></div>
-                    <div><strong>Carousel homepage</strong><span>Možnost přidávat nové hlavní fotky přímo z administrace.</span></div>
+                    <div><strong>Obsah webu</strong><span>Správa zveřejňovaných dokumentů, alb a dalších informací.</span></div>
+                    <div><strong>Homepage</strong><span>Úprava hlavních fotografií a vybraných prvků úvodní stránky.</span></div>
+                    <div><strong>Interní část</strong><span>Přístup pouze pro oprávněné uživatele obce.</span></div>
                 </div>
             </div>
         </section>
@@ -65,9 +65,9 @@ if (isset($_POST['login'])) {
                 </div>
 
                 <div class="auth-card">
-                    <span class="auth-badge">E-podatelna</span>
+                    <span class="auth-badge">Správa webu</span>
                     <h2>Přihlášení do administrace</h2>
-                    <p>Přihlaste se svým účtem pro správu obsahu a interních záznamů obce.</p>
+                    <p>Přihlaste se svým účtem pro interní správu obsahu a nastavení webu obce.</p>
 
                     <?php if ($errorMessage !== ''): ?>
                         <div class="auth-alert"><?php echo app_e($errorMessage); ?></div>
@@ -86,10 +86,6 @@ if (isset($_POST['login'])) {
 
                         <button class="auth-submit" type="submit" name="login">Přihlásit se</button>
                     </form>
-
-                    <div class="auth-note">
-                        Výchozí účet po instalaci: <strong>admin</strong> / <strong>admin123</strong>
-                    </div>
                 </div>
             </div>
         </section>

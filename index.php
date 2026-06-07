@@ -136,7 +136,7 @@ require_once('includes/public-header.php');
                 </a>
             </div>
 
-            <section class="mobile-panel">
+            <section class="mobile-panel mobile-panel-board">
                 <div class="mobile-panel-head">
                     <h2>Historie obce</h2>
                     <a class="mobile-head-link" href="historie-obce.php">→</a>
@@ -202,13 +202,12 @@ require_once('includes/public-header.php');
                 <h2>Radkovice u Budče</h2>
                 <p>Kraj Vysočina</p>
                 <div class="mobile-footer-links">
-                    <a href="#">Povinné informace</a>
-                    <a href="#">Ochrana soukromí</a>
-                    <a href="#">Napište nám</a>
-                    <a href="#">Mapa stránek</a>
+                    <a href="informace-o-webu.php#povinne-informace">Povinné informace</a>
+                    <a href="informace-o-webu.php#ochrana-soukromi">Ochrana soukromí</a>
+                    <a href="kontakty.php">Napište nám</a>
+                    <a href="informace-o-webu.php#mapa-stranek">Mapa stránek</a>
                 </div>
                 <small>© 2024 Obec Radkovice u Budče</small>
-                <a class="mobile-floating-button" href="admin.php" aria-label="E-podatelna">⬂</a>
             </section>
         </section>
 

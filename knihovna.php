@@ -2,6 +2,16 @@
 $pageTitle = 'Knihovna | Radkovice u Budče';
 $activePage = 'knihovna';
 $bodyClass = 'subpage-body';
+$libraryDocuments = array(
+    array(
+        'label' => 'Zřizovací listina [PDF, 854 kB]',
+        'href' => 'uploads/library/zrizovaci-listina.pdf',
+    ),
+    array(
+        'label' => 'Knihovní řád [PDF, 1,5 MB]',
+        'href' => 'uploads/library/knihovni-rad.pdf',
+    ),
+);
 require_once('includes/public-header.php');
 ?>
 
@@ -38,8 +48,9 @@ require_once('includes/public-header.php');
                     </div>
                     <div class="library-links">
                         <strong>Odkazy</strong>
-                        <a href="#">Zřizovací listina [PDF, 854 kB]</a>
-                        <a href="#">Knihovní řád [PDF, 1,5 MB]</a>
+                        <?php foreach ($libraryDocuments as $document): ?>
+                            <a href="<?php echo app_e($document['href']); ?>" target="_blank" rel="noreferrer"><?php echo app_e($document['label']); ?></a>
+                        <?php endforeach; ?>
                     </div>
                 </aside>
             </div>
