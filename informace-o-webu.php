@@ -40,7 +40,7 @@ require_once('includes/public-header.php');
                 <h2>Kontakt na správce webu</h2>
                 <p>Obsah webu spravuje obec Radkovice u Budče. V případě technického problému nebo dotazu k fungování webu využijte obecní kontakt nebo napište přes kontaktní stránku.</p>
                 <div class="info-page-actions">
-                    <a class="button" href="kontakty.php">Kontaktní údaje</a>
+                    <a class="button" href="kontakty">Kontaktní údaje</a>
                     <a class="button button-secondary" href="mailto:obec_radkovice@volny.cz">Napsat e-mail</a>
                 </div>
             </article>
@@ -48,13 +48,13 @@ require_once('includes/public-header.php');
             <article class="info-page-card" id="mapa-stranek">
                 <h2>Mapa stránek</h2>
                 <div class="info-sitemap">
-                    <a href="index.php">Úvod</a>
-                    <a href="uredni-deska.php">Úřední deska</a>
-                    <a href="samosprava.php">Samospráva</a>
-                    <a href="historie-obce.php">Historie obce</a>
-                    <a href="fotogalerie.php">Fotogalerie</a>
-                    <a href="knihovna.php">Knihovna</a>
-                    <a href="kontakty.php">Kontakty</a>
+                    <a href="./">Úvod</a>
+                    <a href="uredni-deska">Úřední deska</a>
+                    <a href="samosprava">Samospráva</a>
+                    <a href="historie-obce">Historie obce</a>
+                    <a href="fotogalerie">Fotogalerie</a>
+                    <a href="knihovna">Knihovna</a>
+                    <a href="kontakty">Kontakty</a>
                 </div>
             </article>
         </section>

@@ -6,49 +6,49 @@ $activePage = $activePage ?? 'home';
 $bodyClass = $bodyClass ?? '';
 
 $menuItems = array(
-    array('key' => 'samosprava', 'label' => 'Samospráva', 'href' => 'samosprava.php'),
-    array('key' => 'uredni-deska', 'label' => 'Úřední deska', 'href' => 'uredni-deska.php'),
-    array('key' => 'historie', 'label' => 'Historie obce', 'href' => 'historie-obce.php'),
-    array('key' => 'fotogalerie', 'label' => 'Fotogalerie', 'href' => 'fotogalerie.php'),
-    array('key' => 'knihovna', 'label' => 'Knihovna', 'href' => 'knihovna.php'),
-    array('key' => 'kontakty', 'label' => 'Kontakty', 'href' => 'kontakty.php'),
+    array('key' => 'samosprava', 'label' => 'Samospráva', 'href' => 'samosprava'),
+    array('key' => 'uredni-deska', 'label' => 'Úřední deska', 'href' => 'uredni-deska'),
+    array('key' => 'historie', 'label' => 'Historie obce', 'href' => 'historie-obce'),
+    array('key' => 'fotogalerie', 'label' => 'Fotogalerie', 'href' => 'fotogalerie'),
+    array('key' => 'knihovna', 'label' => 'Knihovna', 'href' => 'knihovna'),
+    array('key' => 'kontakty', 'label' => 'Kontakty', 'href' => 'kontakty'),
 );
 
 $mobileMenuItems = array(
     array(
         'key' => 'uredni-deska',
         'label' => 'Úřední deska',
-        'href' => 'uredni-deska.php',
+        'href' => 'uredni-deska',
         'icon' => '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 17 4.5 7.5 8 6l3.5 9.5L8 17Zm4-1.5L8.5 6l3.5-1.5L15.5 14 12 15.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 20h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
     ),
     array(
         'key' => 'samosprava',
         'label' => 'Samospráva',
-        'href' => 'samosprava.php',
+        'href' => 'samosprava',
         'icon' => '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 10h16M6 20h12M8 10v7M12 10v7M16 10v7M12 4l8 4H4l8-4Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     ),
     array(
         'key' => 'knihovna',
         'label' => 'Knihovna',
-        'href' => 'knihovna.php',
+        'href' => 'knihovna',
         'icon' => '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 5.5h9a2.5 2.5 0 0 1 2.5 2.5v10.5H8.5A2.5 2.5 0 0 0 6 21V5.5Zm0 0A2.5 2.5 0 0 0 3.5 8v10.5A2.5 2.5 0 0 1 6 16h11.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 9h5M9 12h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
     ),
     array(
         'key' => 'historie',
         'label' => 'Historie obce',
-        'href' => 'historie-obce.php',
+        'href' => 'historie-obce',
         'icon' => '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6.01L3.5 8.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 4.5v4h4M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     ),
     array(
         'key' => 'fotogalerie',
         'label' => 'Fotogalerie',
-        'href' => 'fotogalerie.php',
+        'href' => 'fotogalerie',
         'icon' => '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="m8 15 2.5-2.5L13 15l2-2 3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="10" r="1.4" fill="currentColor"/></svg>',
     ),
     array(
         'key' => 'kontakty',
         'label' => 'Kontakt',
-        'href' => 'kontakty.php',
+        'href' => 'kontakty',
         'icon' => '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s6-4.35 6-10a6 6 0 1 0-12 0c0 5.65 6 10 6 10Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 13.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4Z" stroke="currentColor" stroke-width="1.6"/></svg>',
     ),
 );
@@ -77,7 +77,7 @@ $mobileMenuItems = array(
                 <span></span>
                 <span></span>
             </button>
-            <a class="brand" href="index.php">
+            <a class="brand" href="./">
                 <span class="brand-mark" aria-hidden="true">
                     <img src="img/znak.png" alt="Znak obce Radkovice u Budče" width="32" height="32">
                 </span>
@@ -105,7 +105,7 @@ $mobileMenuItems = array(
     <aside class="mobile-menu-overlay" id="mobile-menu-overlay" data-mobile-menu aria-hidden="true">
         <div class="mobile-menu-frame">
             <div class="mobile-menu-top">
-                <a class="mobile-menu-brand" href="index.php">Radkovice u Budče</a>
+                <a class="mobile-menu-brand" href="./">Radkovice u Budče</a>
                 <button class="mobile-menu-close" type="button" data-mobile-menu-close aria-label="Zavřít menu">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M6 6 18 18M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>

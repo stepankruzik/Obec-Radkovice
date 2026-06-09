@@ -1,0 +1,28 @@
+Options -MultiViews
+
+RewriteEngine On
+RewriteBase /Radkovice2/
+
+# Redirect /index.php to the site root first.
+RewriteCond %{THE_REQUEST} \s/+index(?:\.php)?(?:[\s?]|$) [NC]
+RewriteRule ^index(?:\.php)?$ ./ [R=301,L]
+
+# Friendly aliases for longer public page names.
+RewriteRule ^informace/?$ informace-o-webu.php [L,QSA]
+RewriteCond %{THE_REQUEST} \s/+Radkovice2/informace-o-webu(?:\.php)?(?:[\s?]|$) [NC]
+RewriteRule ^informace-o-webu(?:\.php)?$ informace [R=301,L]
+
+# Hide .php extensions in public URLs.
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php(?:[\s?]|$) [NC]
+RewriteRule ^(.+?)\.php$ $1 [R=301,L,NE]
+
+# Keep real files and directories untouched.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Route extensionless requests to matching PHP files.
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+?)/?$ $1.php [L,QSA]
+
+ErrorDocument 404 /Radkovice2/404

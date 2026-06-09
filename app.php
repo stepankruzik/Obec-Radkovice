@@ -21,7 +21,7 @@ function app_e(?string $value): string
 function app_require_admin(): void
 {
     if (empty($_SESSION['user_id'])) {
-        app_redirect('login.php');
+        app_redirect('login');
     }
 }
 

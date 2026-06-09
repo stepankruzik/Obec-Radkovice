@@ -202,10 +202,10 @@ require_once('includes/public-header.php');
                 <h2>Radkovice u Budče</h2>
                 <p>Kraj Vysočina</p>
                 <div class="mobile-footer-links">
-                    <a href="informace-o-webu.php#povinne-informace">Povinné informace</a>
-                    <a href="informace-o-webu.php#ochrana-soukromi">Ochrana soukromí</a>
+                    <a href="informace#povinne-informace">Povinné informace</a>
+                    <a href="informace#ochrana-soukromi">Ochrana soukromí</a>
                     <a href="kontakty.php">Napište nám</a>
-                    <a href="informace-o-webu.php#mapa-stranek">Mapa stránek</a>
+                    <a href="informace#mapa-stranek">Mapa stránek</a>
                 </div>
                 <small>© 2024 Obec Radkovice u Budče</small>
             </section>

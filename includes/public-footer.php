@@ -28,22 +28,22 @@
                 <div>
                     <h4>Informace</h4>
                     <div class="footer-links">
-                        <a href="informace-o-webu.php#povinne-informace">Povinné informace</a>
-                        <a href="informace-o-webu.php#ochrana-soukromi">Ochrana soukromí</a>
-                        <a href="informace-o-webu.php#pristupnost">Prohlášení o přístupnosti</a>
-                        <a href="informace-o-webu.php#mapa-stranek">Mapa stránek</a>
+                        <a href="informace#povinne-informace">Povinné informace</a>
+                        <a href="informace#ochrana-soukromi">Ochrana soukromí</a>
+                        <a href="informace#pristupnost">Prohlášení o přístupnosti</a>
+                        <a href="informace#mapa-stranek">Mapa stránek</a>
                     </div>
                 </div>
 
                 <div>
                     <h4>Užitečné odkazy</h4>
                     <div class="footer-links">
-                        <a href="samosprava.php">Samospráva</a>
-                        <a href="uredni-deska.php">Úřední deska</a>
-                        <a href="historie-obce.php">Historie obce</a>
-                        <a href="fotogalerie.php">Fotogalerie</a>
-                        <a href="knihovna.php">Knihovna</a>
-                        <a href="kontakty.php">Kontakty</a>
+                        <a href="samosprava">Samospráva</a>
+                        <a href="uredni-deska">Úřední deska</a>
+                        <a href="historie-obce">Historie obce</a>
+                        <a href="fotogalerie">Fotogalerie</a>
+                        <a href="knihovna">Knihovna</a>
+                        <a href="kontakty">Kontakty</a>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                 <span>&copy; 2026 Obec Radkovice u Budče. Všechna práva vyhrazena.</span>
                 <span>Poslední aktualizace: 31. 5. 2026</span>
                 <span>Region Vysočina</span>
-                <a class="copyright-admin-link" href="login.php" aria-label="Správa webu">Správa webu</a>
+                <a class="copyright-admin-link" href="login" aria-label="Správa webu">Správa webu</a>
             </div>
         </div>
     </footer>

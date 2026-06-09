@@ -6,4 +6,4 @@ session_destroy();
 
 session_start();
 app_set_flash('success', 'Byli jste odhlášeni.');
-app_redirect('login.php');
+app_redirect('login');

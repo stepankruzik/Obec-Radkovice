@@ -2,7 +2,7 @@
 require_once('app.php');
 
 if (!empty($_SESSION['user_id'])) {
-    app_redirect('admin.php');
+    app_redirect('admin');
 }
 
 $errorMessage = '';
@@ -16,7 +16,7 @@ if (isset($_POST['login'])) {
     if ($user && (int) ($user['is_active'] ?? 1) === 1 && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         Db::query("UPDATE users SET last_login = ?, updated_at = ? WHERE id = ?", app_now(), app_now(), (int) $user['id']);
-        app_redirect('admin.php');
+        app_redirect('admin');
     }
 
     $errorMessage = 'Neplatné uživatelské jméno nebo heslo.';
@@ -56,7 +56,7 @@ if (isset($_POST['login'])) {
         <section class="auth-panel">
             <div class="auth-panel-inner">
                 <div class="auth-topline">
-                    <a class="auth-home" href="index.php">← Zpět na web</a>
+                    <a class="auth-home" href="./">← Zpět na web</a>
                     <button class="admin-theme-toggle" type="button" data-theme-toggle aria-label="Přepnout tmavý režim">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                             <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -73,7 +73,7 @@ if (isset($_POST['login'])) {
                         <div class="auth-alert"><?php echo app_e($errorMessage); ?></div>
                     <?php endif; ?>
 
-                    <form method="post" action="login.php" class="auth-form">
+                    <form method="post" action="login" class="auth-form">
                         <label class="admin-field">
                             <span>Uživatelské jméno</span>
                             <input type="text" id="username" name="username" value="<?php echo app_e($_POST['username'] ?? ''); ?>" required>

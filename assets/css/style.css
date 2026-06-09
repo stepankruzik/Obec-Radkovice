@@ -1039,6 +1039,57 @@ textarea {
     font-weight: 700;
 }
 
+.error-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+    gap: 24px;
+    padding: 8px 0 72px;
+    align-items: start;
+}
+
+.error-card,
+.error-side-card {
+    padding: 34px;
+    border-radius: 30px;
+    border: 1px solid rgba(184, 15, 23, 0.08);
+    box-shadow: var(--shadow);
+}
+
+.error-card {
+    background:
+        radial-gradient(circle at top right, rgba(31, 122, 60, 0.08), transparent 28%),
+        linear-gradient(180deg, rgba(255, 250, 247, 0.98), rgba(252, 255, 252, 0.96));
+}
+
+.error-side-card {
+    display: grid;
+    gap: 12px;
+    background: linear-gradient(180deg, rgba(32, 113, 59, 0.96), rgba(24, 88, 46, 0.98));
+    color: #f3f8ef;
+}
+
+.error-side-card strong {
+    font-size: 0.92rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 240, 208, 0.9);
+}
+
+.error-side-card a {
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    color: inherit;
+    font-weight: 700;
+}
+
+.error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
 .copyright-admin-link {
     margin-left: auto;
     opacity: 0.32;
@@ -1949,6 +2000,7 @@ textarea {
     .page-hero-grid,
     .history-layout,
     .album-hero-card,
+    .error-hero,
     .info-split {
         grid-template-columns: 1fr;
     }
@@ -2579,6 +2631,16 @@ html[data-theme="dark"] .page-dot.active {
 html[data-theme="dark"] .info-sitemap a {
     color: #ebfff0;
     background: rgba(41, 101, 55, 0.48);
+}
+
+html[data-theme="dark"] .error-card {
+    background:
+        radial-gradient(circle at top right, rgba(104, 192, 122, 0.08), transparent 28%),
+        linear-gradient(180deg, rgba(42, 30, 30, 0.98), rgba(34, 24, 24, 0.98));
+}
+
+html[data-theme="dark"] .error-side-card a {
+    background: rgba(255, 255, 255, 0.06);
 }
 
 html[data-theme="dark"] .library-card-main {
